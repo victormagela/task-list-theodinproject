@@ -2,6 +2,8 @@ const SECRET = Symbol('secret');
 const EQUALS = Symbol('equals');
 
 class Task {
+    static #counter = 0;
+
     #id;
     #title;
     #description;
@@ -20,8 +22,8 @@ class Task {
         this.#priority = priority;
     }
 
-    static create(id, title, description, dueDate, isDone, priority) {
-        return new Task(SECRET, id, title, description, dueDate, isDone, priority);
+    static create(title, description, dueDate, isDone, priority) {
+        return new Task(SECRET, ++Task.#counter, title, description, dueDate, isDone, priority);
     }
 
     get id() {
@@ -70,7 +72,7 @@ class Task {
 
     [Symbol.toPrimitive](hint) {
         if (hint === 'number') return this.#id;
-        else return `Task ${this.#id}: ${this.#title} - ${this.#description} (Due: ${this.#dueDate}, Done: ${this.#isDone}, Priority: ${this.#priority}) `; 
+        else return `Task ${this.#id}: ${this.#title} - ${this.#description}, Due: ${this.#dueDate}, Done: ${this.#isDone}, Priority: ${this.#priority}) `; 
     }
 
     [EQUALS](other) {
