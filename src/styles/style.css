@@ -5,4 +5,34 @@
     --expired-color: #FF2400;
     --completed-color: #32CD32;
     --primary-color: #1E90FF;
+    --border-color: #cccccc; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.side-bar {
+    min-height: 100vh;
+    width: 250px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+main {
+    margin-left: 250px;
+    padding: 1.2rem;
 }
