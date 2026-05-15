@@ -58,4 +58,9 @@ class Task {
     set priority(priority) {
         this.#priority = priority;
     }
+
+    [Symbol.toPrimitive](hint) {
+        if (hint === 'number') return this.#id;
+        else return this.#description; 
+    }
 }
