@@ -1,7 +1,7 @@
 const SECRET = Symbol('secret');
 const EQUALS = Symbol('equals');
 
-class Task {
+export default class Task {
     static #counter = 0;
 
     #id;
