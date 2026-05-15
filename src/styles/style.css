@@ -1,0 +1,8 @@
+:root {
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --active-color: #FF7F50;
+    --expired-color: #FF2400;
+    --completed-color: #32CD32;
+    --primary-color: #1E90FF;
+}
