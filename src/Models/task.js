@@ -1,3 +1,5 @@
+const EQUALS = Symbol('equals');
+
 class Task {
     #id;
     #title;
@@ -63,4 +65,11 @@ class Task {
         if (hint === 'number') return this.#id;
         else return this.#description; 
     }
+
+    [EQUALS](other) {
+        if (!other instanceof Task) return false;
+
+        return this.#id === other.id;
+    }
 }
+
