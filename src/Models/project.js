@@ -1,3 +1,5 @@
+import Task from './task.js';
+
 class Project {
     #id;
     #title;
@@ -36,8 +38,22 @@ class Project {
     }
 
     addTask(title, description, dueDate, priority) {
-        const task = Task.create(title, description, dueDate, false, priority);
+        const task = Task.create(title, description, dueDate, priority);
         this.#tasks.push(task);
         return task;
+    }
+
+    removeTask(taskId) {
+        const task = this.#tasks.find(t => +t === +taskId);
+        if (!task) return;
+
+        this.#tasks = this.#tasks.filter(t => +t !== +taskId);
+    }
+
+    toogleTask(taskId) {
+        const task = this.#tasks.find(t => +t === +taskId);
+        if (!task) return;
+
+        task.toogle();
     }
 }
