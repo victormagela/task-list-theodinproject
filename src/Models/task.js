@@ -26,6 +26,12 @@ class Task {
         return new Task(SECRET, ++Task.#counter, title, description, dueDate, isDone, priority);
     }
 
+    static fromObj(obj) {
+    Task.#counter = Math.max(Task.#counter, obj.id);
+
+    return new Task(SECRET, obj.id, obj.title, obj.description, obj.dueDate, obj.isDone, obj.priority);
+    }
+
     get id() {
         return this.#id;
     }
