@@ -22,8 +22,8 @@ export default class Task {
         this.#priority = priority;
     }
 
-    static create(title, description, dueDate, isDone, priority) {
-        return new Task(SECRET, ++Task.#counter, title, description, dueDate, isDone, priority);
+    static create(title, description, dueDate, priority) {
+        return new Task(SECRET, ++Task.#counter, title, description, dueDate, false, priority);
     }
 
     static fromObj(obj) {
@@ -68,12 +68,12 @@ export default class Task {
         this.#dueDate = dueDate;
     }
 
-    set isDone(isDone) {
-        this.#isDone = isDone;
-    }
-
     set priority(priority) {
         this.#priority = priority;
+    }
+
+    toogle() {
+        this.#isDone = !this.#isDone;
     }
 
     [Symbol.toPrimitive](hint) {
