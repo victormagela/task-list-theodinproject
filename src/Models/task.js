@@ -1,3 +1,4 @@
+const SECRET = Symbol('secret');
 const EQUALS = Symbol('equals');
 
 class Task {
@@ -8,13 +9,19 @@ class Task {
     #isDone;
     #priority;
 
-    constructor(id, title, description, dueDate, isDone, priority) {
+    constructor(key, id, title, description, dueDate, isDone, priority) {
+        if (key !== SECRET) throw new Error('Use Task.create() to create a new task');
+        
         this.#id = id;
         this.#title = title;
         this.#description = description;
         this.#dueDate = dueDate;
         this.#isDone = isDone;
         this.#priority = priority;
+    }
+
+    static create(id, title, description, dueDate, isDone, priority) {
+        return new Task(SECRET, id, title, description, dueDate, isDone, priority);
     }
 
     get id() {
@@ -63,7 +70,7 @@ class Task {
 
     [Symbol.toPrimitive](hint) {
         if (hint === 'number') return this.#id;
-        else return this.#description; 
+        else return `Task ${this.#id}: ${this.#title} - ${this.#description} (Due: ${this.#dueDate}, Done: ${this.#isDone}, Priority: ${this.#priority}) `; 
     }
 
     [EQUALS](other) {
@@ -72,4 +79,3 @@ class Task {
         return this.#id === other.id;
     }
 }
-
