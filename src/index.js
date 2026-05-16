@@ -1,4 +1,5 @@
 import "./styles/reset.css";
 import "./styles/style.css";
+import loadNewProjectModal from "./components/modals/new-project-modal.js";
 
-console.log("Hello, World!");
+loadNewProjectModal();
