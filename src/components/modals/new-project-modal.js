@@ -1,4 +1,5 @@
 import Project from "../../Models/project.js";
+import { loadNewProject } from "../sidebar-content.js";
 
 export default function loadNewProjectModal() {
     const newProjectBtn = document.getElementById('newProjectBtn');
@@ -20,6 +21,8 @@ export default function loadNewProjectModal() {
         const projectDescription = formData.get('projectDescription');
 
         const newProject = Project.create(projectName, projectDescription);
+
+        loadNewProject(newProject);
     })
 
 }
