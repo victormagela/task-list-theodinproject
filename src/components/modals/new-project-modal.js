@@ -1,3 +1,5 @@
+import "../../styles/modals.css";
+
 import Project from "../../Models/project.js";
 import { loadNewProject } from "../sidebar-content.js";
 
