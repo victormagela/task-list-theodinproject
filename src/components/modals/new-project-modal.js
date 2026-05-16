@@ -23,6 +23,7 @@ export default function loadNewProjectModal() {
         const newProject = Project.create(projectName, projectDescription);
 
         loadNewProject(newProject);
+        newProjectForm.reset();
     })
 
 }
