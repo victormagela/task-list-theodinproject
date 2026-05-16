@@ -1,4 +1,4 @@
-const SECRET = Symbol('secret');
+export const SECRET = Symbol('secret');
 const EQUALS = Symbol('equals');
 
 export default class Task {
