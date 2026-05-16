@@ -8,5 +8,9 @@ export default function loadNewProjectModal() {
         newProjectDialog.showModal();
     })
 
+    cancelBtn.addEventListener('click', () => {
+        newProjectDialog.close();
+    })
+
 }
 
