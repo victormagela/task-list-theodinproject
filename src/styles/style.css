@@ -39,14 +39,19 @@ header {
 
 main {
     margin-left: 250px;
+    block-size: 100vh;
     padding-block-start: 1.2rem;
     text-align: center;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
 }
 
 .task-grid {
-    margin-block-start: 2rem;
+    margin-block-start: 1rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
     padding: 1rem;
     background-color: var(--surface-color);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
