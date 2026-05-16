@@ -11,11 +11,11 @@ export default function loadNewProjectModal() {
     
     newProjectBtn.addEventListener('click', () => {
         newProjectDialog.showModal();
-    })
+    });
 
     cancelBtn.addEventListener('click', () => {
         newProjectDialog.close();
-    })
+    });
 
     newProjectForm.addEventListener('submit', () => {
         const formData = new FormData(newProjectForm);
@@ -26,7 +26,11 @@ export default function loadNewProjectModal() {
 
         loadNewProject(newProject);
         newProjectForm.reset();
-    })
+    });
+
+    newProjectForm.addEventListener('click', (e) => e.stopPropagation());
+
+    newProjectDialog.addEventListener('click', () => newProjectDialog.close());
 
 }
 
