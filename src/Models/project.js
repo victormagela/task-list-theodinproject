@@ -56,4 +56,11 @@ class Project {
 
         task.toogle();
     }
+
+    updateTask(id, fn) {
+        const task = this.#tasks.find(t => +t === +id);
+        if (!task) return;
+
+        fn(task);
+    }
 }
