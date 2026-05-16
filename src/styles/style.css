@@ -1,5 +1,6 @@
 :root {
     --text-color: #333333;
+    --secondary-text-color: #ffffff;
     --background-color: #ffffff;
     --surface-color: #f9f9f9;
     --active-color: #FF7F50;
@@ -32,6 +33,10 @@ h1, h2 {
     border-radius: 0 10px 10px 0;
     background-color: transparent;
     border: 1px solid var(--border-color);
+
+    h2 {
+        margin-inline-start: 1rem;
+    }
 }
 
 header {
@@ -40,6 +45,27 @@ header {
     font-size: 1.2rem;
     font-weight: bold;
     padding: 1rem;
+}
+
+.new-project-btn {
+    margin-inline: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: var(--secondary-text-color);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
 }
 
 main {
