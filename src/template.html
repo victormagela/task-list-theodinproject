@@ -28,6 +28,19 @@
 
         <section class="task-grid" id="taskGrid"></section>
     </main>
-    
+
+    <!-- dialog window for creating a new project -->
+    <dialog id="newProjectDialog">
+        <form method="dialog" id="newProjectForm">
+            <h3>New Project</h3>
+            <label for="projectName">Project Name:</label>
+            <input type="text" id="projectName" name="projectName" required>
+            <label for="projectDescription">Project Description:</label>
+            <input type="text" id="projectDescription" name="projectDescription">
+            <div class="dialog-buttons">
+                <button type="submit">Create</button>
+                <button type="button" id="cancelBtn">Cancel</button>
+            </div>
+        </form>
 </body>
 </html>
