@@ -28,7 +28,7 @@ form {
 }
 
 .form-group {
-    width: 100%;
+    inline-size: 100%;
     display: flex;
     align-items: center;
 
@@ -48,6 +48,34 @@ form {
         &:focus {
             outline: none;
             box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.dialog-buttons {
+    inline-size: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    button {
+        border: none;
+        border-radius: 10px;
+        padding: 0.3rem;
+        width: 25%;
+        background-color: var(--primary-color);
+        color: var(--secondary-text-color);
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &:active {
+            opacity: 0.6;
         }
     }
 }
