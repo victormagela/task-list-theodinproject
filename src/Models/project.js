@@ -1,6 +1,6 @@
 import Task from './task.js';
 
-class Project {
+export default class Project {
     #id;
     #title;
     #description;
