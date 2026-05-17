@@ -155,6 +155,12 @@ li {
     }
 }
 
+.active-project {
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: var(--primary-color-semi-transparent);
+}
+
 .empty-message {
     border: 1px solid var(--primary-color);
     border-radius: 10px;

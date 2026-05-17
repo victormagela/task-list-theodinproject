@@ -11,9 +11,13 @@ export function loadNewProject(project) {
     projectItem.textContent = project.title;
     projectItem.classList.add('project');
     projectItem.addEventListener('click', () => {
+        const activeProjectItem = document.querySelector('.active-project');
+
+        if (activeProjectItem) activeProjectItem.classList.remove('active-project');
+        projectItem.classList.add('active-project');
+
         stateManager.setCurrentProject(project);
         loadTaskGrid(project.tasks);
-        console.log(stateManager.getCurrentProject());
     });
 
     listItem.appendChild(projectItem);
