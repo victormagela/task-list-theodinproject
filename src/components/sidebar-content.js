@@ -3,9 +3,12 @@ import Project from '../Models/project.js';
 const projectList = document.getElementById('projectList');
 
 export function loadNewProject(project) {
-    const projectItem = document.createElement('li');
+    const listItem = document.createElement('li');
+    const projectItem = document.createElement('button');
     projectItem.textContent = project.title;
-    projectList.appendChild(projectItem);
+    projectItem.classList.add('project');
+    listItem.appendChild(projectItem);
+    projectList.appendChild(listItem);
 } 
 
 export function loadProjects() {
