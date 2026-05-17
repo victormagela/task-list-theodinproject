@@ -107,7 +107,8 @@ main {
 }
 
 .task {
-    inline-size: 100%;
+    inline-size: 90%;
+    max-inline-size: 300px;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -133,6 +134,7 @@ main {
     }
 
     .task-description {
+        max-inline-size: 50ch;
         text-align: center;
         font-size: 0.7rem;
         margin-bottom: 1rem;
