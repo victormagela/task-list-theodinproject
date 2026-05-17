@@ -40,7 +40,7 @@ export function loadTaskGrid(tasks) {
         taskDescription.classList.add('task-description');
 
         const taskDueDate = document.createElement('p');
-        taskDueDate.textContent = `Due: ${task.dueDate}`;
+        taskDueDate.textContent = `Due ${task.dueDate}`;
         taskDueDate.classList.add('task-due-date');
 
         const checkbox = renderCheckBox(task);
@@ -57,35 +57,32 @@ export function loadTaskGrid(tasks) {
 }
 
 const renderCheckBox = (task) => {
-    const label = document.createElement('label');
-    label.textContent = 'Done: ';
-    
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.isDone;
-    label.appendChild(checkbox);
+
     checkbox.addEventListener('change', () => {
         task.toggle();
         const today = new Date();
         const dueDate = new Date(task.dueDate);
         
         if (!task.isDone && dueDate > today) {
-            label.parentElement.className = "";
-            label.parentElement.classList.add('task', 'active');
+            checkbox.parentElement.className = "";
+            checkbox.parentElement.classList.add('task', 'active');
         } else if (task.isDone && dueDate > today) {
-            label.parentElement.className = "";
-            label.parentElement.classList.add('task', 'completed');
+            checkbox.parentElement.className = "";
+            checkbox.parentElement.classList.add('task', 'completed');
         } else if (!task.isDone && dueDate < today) {
-            label.parentElement.className = "";
-            label.parentElement.classList.add('task', 'expired');
+            checkbox.parentElement.className = "";
+            checkbox.parentElement.classList.add('task', 'expired');
         } else if (task.isDone && dueDate < today) {
-            label.parentElement.className = "";
-            label.parentElement.classList.add('task', 'completed');
+            checkbox.parentElement.className = "";
+            checkbox.parentElement.classList.add('task', 'completed');
         }
 
         loadTaskGrid(stateManager.getCurrentProject().tasks);
     })
 
 
-    return label;
+    return checkbox;
 }

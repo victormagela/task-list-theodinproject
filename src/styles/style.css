@@ -109,6 +109,8 @@ main {
 .task {
     inline-size: 100%;
     padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
     transition: box-shadow 0.3s ease, 
                 transform 0.3s ease;
 
@@ -128,7 +130,6 @@ main {
         text-align: center;
         font-size: 1.2rem;
         font-weight: 700;
-        margin-bottom: 0.3rem;
     }
 
     .task-description {
@@ -140,17 +141,11 @@ main {
     .task-due-date {
         text-align: left;
         font-size: 0.7rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     .task-checkbox {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.8rem;
-    }
-
-    .task-checkbox input {
+        margin-inline-end: auto;
         transform: scale(1.2);
     }
 }
