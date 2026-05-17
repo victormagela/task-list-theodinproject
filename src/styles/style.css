@@ -102,8 +102,15 @@ main {
     background-color: var(--surface-color);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: auto 1fr;
     place-items: center;
     gap: 1rem;
+}
+
+.project-description {
+    grid-area: 1 / 1 / span 1 / -1;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .task {
