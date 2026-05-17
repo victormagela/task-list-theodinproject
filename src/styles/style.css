@@ -124,6 +124,10 @@ main {
     font-weight: bold;
 }
 
+svg {
+    fill: currentColor;
+}
+
 .task {
     inline-size: 90%;
     max-inline-size: 300px;
@@ -168,6 +172,15 @@ main {
         margin-inline-end: auto;
         transform: scale(1.2);
     }
+
+    .task-btn {
+        border: none;
+        padding: 0;
+        background: none;
+        inline-size: 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
 }
 
 .active {
@@ -175,6 +188,7 @@ main {
     border: 1px solid var(--active-color);
 
     .task-priority,
+    .task-btn,
     .task-title,
     .task-description,
     .task-due-date {
@@ -187,6 +201,7 @@ main {
     border: 1px solid var(--expired-color);
 
     .task-priority,
+    .task-btn,
     .task-title,
     .task-description,
     .task-due-date {
@@ -199,6 +214,7 @@ main {
     border: 1px solid var(--completed-color);
 
     .task-priority,
+    .task-btn,
     .task-title,
     .task-description,
     .task-due-date {
