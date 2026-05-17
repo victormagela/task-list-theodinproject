@@ -17,7 +17,14 @@ export function loadTaskGrid(tasks) {
 
     tasks.forEach(task => {
         const taskCard = document.createElement('div');
-        taskCard.classList.add('task');
+
+        if (new Date(task.dueDate) < new Date() && !task.isDone) {
+            taskCard.classList.add('task', 'expired');
+        } else if (task.isDone) {
+            taskCard.classList.add('task', 'completed');
+        } else {
+            taskCard.classList.add('task', 'active');
+        }
 
         const taskTitle = document.createElement('h3');
         taskTitle.textContent = `Title: ${task.title}`;
