@@ -1,8 +1,12 @@
 const taskGrid = document.getElementById('taskGrid');
 import stateManager from "../services/state-manager.js";
 
-export function loadTaskGrid(tasks) {
+export function loadTaskGrid(projectDescription, tasks) {
     taskGrid.replaceChildren();
+
+    const projectHeader = document.createElement('h3');
+    projectHeader.textContent = projectDescription;
+    taskGrid.appendChild(projectHeader);
 
     if (tasks.length === 0) {
         const messageContainer = document.createElement('div');

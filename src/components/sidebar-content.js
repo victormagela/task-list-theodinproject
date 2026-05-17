@@ -14,7 +14,7 @@ export function loadNewProject(project) {
         highlightActiveProject(e.target);
 
         stateManager.setCurrentProject(project);
-        loadTaskGrid(project.tasks);
+        loadTaskGrid(project.description, project.tasks);
     });
 
     listItem.appendChild(projectItem);
@@ -31,7 +31,7 @@ export function loadProjects() {
         );
         const projectItem = loadNewProject(defaultProject);
         stateManager.setCurrentProject(defaultProject);
-        loadTaskGrid(defaultProject.tasks);
+        loadTaskGrid(defaultProject.description, defaultProject.tasks);
 
         highlightActiveProject(projectItem);
     }
