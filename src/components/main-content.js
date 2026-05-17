@@ -26,25 +26,29 @@ export function loadTaskGrid(tasks) {
         } else {
             taskCard.classList.add('task', 'active');
         }
+        
+        const taskPriority = document.createElement('p');
+        taskPriority.textContent = `Priority: ${task.priority}`;
+        taskPriority.classList.add('task-priority');
 
         const taskTitle = document.createElement('h3');
         taskTitle.textContent = `Title: ${task.title}`;
+        taskTitle.classList.add('task-title');
 
         const taskDescription = document.createElement('p');
         taskDescription.textContent = `Description: ${task.description}`;
+        taskDescription.classList.add('task-description');
 
         const taskDueDate = document.createElement('p');
         taskDueDate.textContent = `Due: ${task.dueDate}`;
-
-        const taskPriority = document.createElement('p');
-        taskPriority.textContent = `Priority: ${task.priority}`;
+        taskDueDate.classList.add('task-due-date');
 
         const checkbox = renderCheckBox(task);
 
+        taskCard.appendChild(taskPriority);
         taskCard.appendChild(taskTitle);
         taskCard.appendChild(taskDescription);
         taskCard.appendChild(taskDueDate);
-        taskCard.appendChild(taskPriority);
         taskCard.appendChild(checkbox);
 
         taskGrid.appendChild(taskCard);
