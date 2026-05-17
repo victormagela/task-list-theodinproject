@@ -85,6 +85,7 @@ header {
 }
 
 main {
+    position: relative;
     margin-left: 250px;
     min-block-size: 100vh;
     padding-block-start: 1.2rem;
@@ -170,5 +171,28 @@ li {
 
     p {
         margin: auto;
+    }
+}
+
+.new-task-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    border: none;
+    border-radius: 50%;
+    block-size: 3rem;
+    inline-size: 3rem;
+    background-color: var(--primary-color);
+    font-size: 2rem;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:active {
+        opacity: 0.6;
     }
 }
