@@ -10,11 +10,8 @@ export function loadNewProject(project) {
 
     projectItem.textContent = project.title;
     projectItem.classList.add('project');
-    projectItem.addEventListener('click', () => {
-        const activeProjectItem = document.querySelector('.active-project');
-
-        if (activeProjectItem) activeProjectItem.classList.remove('active-project');
-        projectItem.classList.add('active-project');
+    projectItem.addEventListener('click', (e) => {
+        highlightActiveProject(e.target);
 
         stateManager.setCurrentProject(project);
         loadTaskGrid(project.tasks);
@@ -22,6 +19,8 @@ export function loadNewProject(project) {
 
     listItem.appendChild(projectItem);
     projectList.appendChild(listItem);
+    
+    return projectItem;
 } 
 
 export function loadProjects() {
@@ -30,8 +29,17 @@ export function loadProjects() {
             'My First Project',
             'This is your default first project'
         );
-        loadNewProject(defaultProject);
+        const projectItem = loadNewProject(defaultProject);
         stateManager.setCurrentProject(defaultProject);
         loadTaskGrid(defaultProject.tasks);
+
+        highlightActiveProject(projectItem);
     }
+}
+
+const highlightActiveProject = (projectItem) => {
+    const activeProjectItem = document.querySelector('.active-project');
+
+    if (activeProjectItem) activeProjectItem.classList.remove('active-project');
+    projectItem.classList.add('active-project');
 }
