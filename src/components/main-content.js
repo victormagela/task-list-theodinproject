@@ -5,7 +5,7 @@ export function loadTaskGrid(projectDescription, tasks) {
     taskGrid.replaceChildren();
 
     const projectHeader = document.createElement('h3');
-    projectHeader.textContent = projectDescription;
+    projectHeader.textContent = projectDescription.charAt(0).toUpperCase() + projectDescription.slice(1);
     projectHeader.classList.add('project-description');
     taskGrid.appendChild(projectHeader);
 

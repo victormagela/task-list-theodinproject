@@ -8,7 +8,7 @@ export function loadNewProject(project) {
     const listItem = document.createElement('li');
     const projectItem = document.createElement('button');
 
-    projectItem.textContent = project.title;
+    projectItem.textContent = project.title.charAt(0).toUpperCase() + project.title.slice(1);
     projectItem.classList.add('project');
     projectItem.addEventListener('click', (e) => {
         highlightActiveProject(e.target);
