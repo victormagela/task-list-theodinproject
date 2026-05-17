@@ -28,15 +28,15 @@ export function loadTaskGrid(tasks) {
         }
         
         const taskPriority = document.createElement('p');
-        taskPriority.textContent = `Priority: ${task.priority}`;
+        taskPriority.textContent = task.priority.toUpperCase();
         taskPriority.classList.add('task-priority');
 
         const taskTitle = document.createElement('h3');
-        taskTitle.textContent = `Title: ${task.title}`;
+        taskTitle.textContent = task.title.charAt(0).toUpperCase() + task.title.slice(1);
         taskTitle.classList.add('task-title');
 
         const taskDescription = document.createElement('p');
-        taskDescription.textContent = `Description: ${task.description}`;
+        taskDescription.textContent = task.description.charAt(0).toUpperCase() + task.description.slice(1);
         taskDescription.classList.add('task-description');
 
         const taskDueDate = document.createElement('p');
