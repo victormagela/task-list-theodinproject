@@ -153,16 +153,37 @@ main {
 .active {
     background-color: var(--active-color-semi-transparent);
     border: 1px solid var(--active-color);
+
+    .task-priority,
+    .task-title,
+    .task-description,
+    .task-due-date {
+        color: var(--active-color);
+    }
 }
 
 .expired {
     background-color: var(--expired-color-semi-transparent);
     border: 1px solid var(--expired-color);
+
+    .task-priority,
+    .task-title,
+    .task-description,
+    .task-due-date {
+        color: var(--expired-color);
+    }
 }
 
 .completed {
     background-color: var(--completed-color-semi-transparent);
     border: 1px solid var(--completed-color);
+
+    .task-priority,
+    .task-title,
+    .task-description,
+    .task-due-date {
+        color: var(--completed-color);
+    }
 }
 
 ul {
