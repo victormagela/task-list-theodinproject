@@ -24,12 +24,12 @@ export default function loadNewTaskModal() {
 
     newTaskForm.addEventListener('submit', () => {
         const formData = new FormData(newTaskForm);
-        const taskTitle = formData.get('taskTitle');
+        const taskName = formData.get('taskName');
         const taskDescription = formData.get('taskDescription');
-        const taskDueDate = formData.get('taskDueDate');
+        const taskDue = formData.get('taskDue');
         const taskPriority = formData.get('taskPriority');
 
-        activeProject.addTask(taskTitle, taskDescription, taskDueDate, taskPriority);
+        activeProject.addTask(taskName, taskDescription, taskDue, taskPriority);
         
         newTaskForm.reset();
     })

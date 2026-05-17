@@ -12,5 +12,30 @@ export function loadTaskGrid(tasks) {
 
         messageContainer.appendChild(emptyMessage);
         taskGrid.appendChild(messageContainer);
+        return;
     }
+
+    tasks.forEach(task => {
+        const taskCard = document.createElement('div');
+        taskCard.classList.add('task');
+
+        const taskTitle = document.createElement('h3');
+        taskTitle.textContent = `Title: ${task.title}`;
+
+        const taskDescription = document.createElement('p');
+        taskDescription.textContent = `Description: ${task.description}`;
+
+        const taskDueDate = document.createElement('p');
+        taskDueDate.textContent = `Due: ${task.dueDate}`;
+
+        const taskPriority = document.createElement('p');
+        taskPriority.textContent = `Priority: ${task.priority}`;
+
+        taskCard.appendChild(taskTitle);
+        taskCard.appendChild(taskDescription);
+        taskCard.appendChild(taskDueDate);
+        taskCard.appendChild(taskPriority);
+
+        taskGrid.appendChild(taskCard);
+    });
 }
