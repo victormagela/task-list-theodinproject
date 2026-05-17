@@ -1,6 +1,6 @@
 import "../../styles/modals.css";
 
-import Task from "../../Models/task.js";
+import Project from "../../Models/project.js";
 
 export default function loadNewTaskModal() {
     const newTaskBtn = document.getElementById('newTaskBtn');

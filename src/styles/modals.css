@@ -40,7 +40,7 @@ form {
         font-weight: 700;
     }
 
-    input {
+    input, select {
         border: none;
         inline-size: 100%;
         margin-inline-start: auto;
