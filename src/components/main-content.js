@@ -1,4 +1,5 @@
 const taskGrid = document.getElementById('taskGrid');
+import stateManager from "../services/state-manager.js";
 
 export function loadTaskGrid(tasks) {
     taskGrid.replaceChildren();
@@ -38,11 +39,48 @@ export function loadTaskGrid(tasks) {
         const taskPriority = document.createElement('p');
         taskPriority.textContent = `Priority: ${task.priority}`;
 
+        const checkbox = renderCheckBox(task);
+
         taskCard.appendChild(taskTitle);
         taskCard.appendChild(taskDescription);
         taskCard.appendChild(taskDueDate);
         taskCard.appendChild(taskPriority);
+        taskCard.appendChild(checkbox);
 
         taskGrid.appendChild(taskCard);
     });
+}
+
+const renderCheckBox = (task) => {
+    const label = document.createElement('label');
+    label.textContent = 'Done: ';
+    
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = task.isDone;
+    label.appendChild(checkbox);
+    checkbox.addEventListener('change', () => {
+        task.toggle();
+        const today = new Date();
+        const dueDate = new Date(task.dueDate);
+        
+        if (!task.isDone && dueDate > today) {
+            label.parentElement.className = "";
+            label.parentElement.classList.add('task', 'active');
+        } else if (task.isDone && dueDate > today) {
+            label.parentElement.className = "";
+            label.parentElement.classList.add('task', 'completed');
+        } else if (!task.isDone && dueDate < today) {
+            label.parentElement.className = "";
+            label.parentElement.classList.add('task', 'expired');
+        } else if (task.isDone && dueDate < today) {
+            label.parentElement.className = "";
+            label.parentElement.classList.add('task', 'completed');
+        }
+
+        loadTaskGrid(stateManager.getCurrentProject().tasks);
+    })
+
+
+    return label;
 }

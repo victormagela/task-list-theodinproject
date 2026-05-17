@@ -1,7 +1,7 @@
 import "../../styles/modals.css";
 
 import Project from "../../Models/project.js";
-import stateManager from "../../../services/state-manager.js";
+import stateManager from "../../services/state-manager.js";
 import { loadTaskGrid } from "../main-content.js";
 
 

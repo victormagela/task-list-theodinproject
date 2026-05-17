@@ -72,7 +72,7 @@ export default class Task {
         this.#priority = priority;
     }
 
-    toogle() {
+    toggle() {
         this.#isDone = !this.#isDone;
     }
 
