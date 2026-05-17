@@ -44,6 +44,7 @@ export function loadTaskGrid(tasks) {
         taskDueDate.classList.add('task-due-date');
 
         const checkbox = renderCheckBox(task);
+        checkbox.classList.add('task-checkbox');
 
         taskCard.appendChild(taskPriority);
         taskCard.appendChild(taskTitle);
