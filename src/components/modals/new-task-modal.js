@@ -7,8 +7,9 @@ import { loadTaskGrid } from "../main-content.js";
 
 export default function loadNewTaskModal() {    
     const newTaskBtn = document.getElementById('newTaskBtn');
-    const newTaskDialog = document.getElementById('newTaskDialog');
-    const newTaskForm = document.getElementById('newTaskForm');
+    const taskDialog = document.getElementById('TaskDialog');
+    const taskForm = document.getElementById('TaskForm');
+    const taskHeading = document.getElementById('taskHeading');
     const cancelBtn = document.getElementById('cancelTaskBtn');
 
     newTaskBtn.addEventListener('click', () => {
@@ -19,13 +20,14 @@ export default function loadNewTaskModal() {
             return;
         }
 
-        newTaskDialog.showModal();
+        taskHeading.textContent = `New Task for ${activeProject.title}`;
+        taskDialog.showModal();
     })
 
-    newTaskForm.addEventListener('submit', () => {
+    taskForm.addEventListener('submit', () => {
         const activeProject = stateManager.getCurrentProject();
 
-        const formData = new FormData(newTaskForm);
+        const formData = new FormData(taskForm);
         const taskName = formData.get('taskName');
         const taskDescription = formData.get('taskDescription');
         const taskDue = formData.get('taskDue');
@@ -33,11 +35,11 @@ export default function loadNewTaskModal() {
 
         activeProject.addTask(taskName, taskDescription, taskDue, taskPriority);
         
-        newTaskForm.reset();
+        taskForm.reset();
         loadTaskGrid(activeProject.description, activeProject.tasks);
     })
 
     cancelBtn.addEventListener('click', () => {
-        newTaskDialog.close();
+        taskDialog.close();
     });
 }
