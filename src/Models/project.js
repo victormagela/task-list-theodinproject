@@ -72,10 +72,10 @@ export default class Project {
         task.toogle();
     }
 
-    updateTask(id, fn) {
-        const task = this.#tasks.find(t => +t === +id);
+    updateTask(taskId, editedTask) {
+        const task = this.#tasks.find(t => +t === +taskId);
         if (!task) return;
 
-        fn(task);
+        Object.assign(task, editedTask);
     }
 }

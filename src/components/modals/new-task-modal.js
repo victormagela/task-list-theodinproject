@@ -10,6 +10,7 @@ export default function loadNewTaskModal() {
     const taskDialog = document.getElementById('TaskDialog');
     const taskForm = document.getElementById('TaskForm');
     const taskHeading = document.getElementById('taskHeading');
+    const taskSubmitBtn = document.getElementById('taskSubmitBtn');
     const cancelBtn = document.getElementById('cancelTaskBtn');
 
     newTaskBtn.addEventListener('click', () => {
@@ -21,6 +22,7 @@ export default function loadNewTaskModal() {
         }
 
         taskHeading.textContent = `New Task for ${activeProject.title}`;
+        taskSubmitBtn.textContent = 'Create';
         taskDialog.showModal();
     })
 
