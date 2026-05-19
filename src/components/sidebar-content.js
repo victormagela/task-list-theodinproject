@@ -1,6 +1,6 @@
 import Project from '../Models/project.js';
 import stateManager from '../services/state-manager.js';
-import { loadTaskGrid } from './main-content.js';
+import { renderTaskGrid } from './main-content.js';
 
 const projectList = document.getElementById('projectList');
 
@@ -14,7 +14,7 @@ export function loadNewProject(project) {
         highlightActiveProject(e.target);
 
         stateManager.setCurrentProject(project);
-        loadTaskGrid(project.description, project.tasks);
+        renderTaskGrid(project.description, project.tasks);
     });
 
     listItem.appendChild(projectItem);
@@ -31,7 +31,7 @@ export function loadProjects() {
         );
         const projectItem = loadNewProject(defaultProject);
         stateManager.setCurrentProject(defaultProject);
-        loadTaskGrid(defaultProject.description, defaultProject.tasks);
+        renderTaskGrid(defaultProject.description, defaultProject.tasks);
 
         highlightActiveProject(projectItem);
     }

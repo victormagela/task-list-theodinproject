@@ -59,23 +59,27 @@ export default class Project {
     }
 
     removeTask(taskId) {
-        const task = this.#tasks.find(t => +t === +taskId);
+        const task = this.findTask(taskId);
         if (!task) return;
 
         this.#tasks = this.#tasks.filter(t => +t !== +taskId);
     }
 
     toogleTask(taskId) {
-        const task = this.#tasks.find(t => +t === +taskId);
+        const task = this.findTask(taskId);
         if (!task) return;
 
         task.toogle();
     }
 
     updateTask(taskId, editedTask) {
-        const task = this.#tasks.find(t => +t === +taskId);
+        const task = this.findTask(taskId);
         if (!task) return;
 
         Object.assign(task, editedTask);
+    }
+
+    findTask(taskId) {
+        return this.#tasks.find(t => +t === +taskId);
     }
 }

@@ -2,7 +2,7 @@ import "../../styles/modals.css";
 
 import Project from "../../Models/project.js";
 import stateManager from "../../services/state-manager.js";
-import { loadTaskGrid } from "../main-content.js";
+import { renderTaskGrid } from "../main-content.js";
 import { formManager } from "../../services/form-manager.js";
 
 
@@ -41,7 +41,7 @@ export default function loadNewTaskModal() {
         activeProject.addTask(taskName, taskDescription, taskDue, taskPriority);
         
         taskForm.reset();
-        loadTaskGrid(activeProject.description, activeProject.tasks);
+        renderTaskGrid(activeProject.description, activeProject.tasks);
     })
 
     cancelBtn.addEventListener('click', () => {
