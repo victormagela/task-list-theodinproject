@@ -3,6 +3,7 @@ import "../../styles/modals.css";
 import Project from "../../Models/project.js";
 import stateManager from "../../services/state-manager.js";
 import { loadTaskGrid } from "../main-content.js";
+import { formManager } from "../../services/form-manager.js";
 
 
 export default function loadNewTaskModal() {    
@@ -14,6 +15,7 @@ export default function loadNewTaskModal() {
     const cancelBtn = document.getElementById('cancelTaskBtn');
 
     newTaskBtn.addEventListener('click', () => {
+        formManager.formIntent = 'CREATE';
         const activeProject = stateManager.getCurrentProject();
 
         if (!activeProject) {
@@ -27,6 +29,7 @@ export default function loadNewTaskModal() {
     })
 
     taskForm.addEventListener('submit', () => {
+        if (formManager.formIntent === 'EDIT') return;
         const activeProject = stateManager.getCurrentProject();
 
         const formData = new FormData(taskForm);
@@ -42,6 +45,7 @@ export default function loadNewTaskModal() {
     })
 
     cancelBtn.addEventListener('click', () => {
+        taskForm.reset();
         taskDialog.close();
     });
 }

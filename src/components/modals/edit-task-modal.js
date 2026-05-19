@@ -15,4 +15,11 @@ export default function loadEditTaskModal(task) {
     taskSubmitBtn.textContent = 'Save';
 
     taskDialog.showModal();
+
+    taskForm.addEventListener('submit', () => {
+        if (formManager.formIntent === "CREATE") return;
+
+        console.log('edit form submitted');
+        taskForm.reset();
+    })
 }
