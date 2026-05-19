@@ -8,8 +8,8 @@ import { formManager } from "../../services/form-manager.js";
 
 export default function loadNewTaskModal() {    
     const newTaskBtn = document.getElementById('newTaskBtn');
-    const taskDialog = document.getElementById('TaskDialog');
-    const taskForm = document.getElementById('TaskForm');
+    const taskDialog = document.getElementById('taskDialog');
+    const taskForm = document.getElementById('taskForm');
     const taskHeading = document.getElementById('taskHeading');
     const taskSubmitBtn = document.getElementById('taskSubmitBtn');
     const cancelBtn = document.getElementById('cancelTaskBtn');
