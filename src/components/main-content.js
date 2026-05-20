@@ -1,6 +1,5 @@
 import { formManager } from "../services/form-manager.js";
 import stateManager from "../services/state-manager.js";
-import configEditTaskModal from "./modals/edit-task-modal.js";
 
 const taskGrid = document.getElementById('taskGrid');
 const taskDialog = document.getElementById('taskDialog');
@@ -22,6 +21,8 @@ const setupGridEvents = () => {
             activeProject.removeTask(taskId);
             renderTaskGrid(activeProject.description, activeProject.tasks);
         } else if (btn.dataset.action === 'edit') {
+            formManager.formIntent = 'EDIT';
+            taskDialog.dataset.id = btn.closest('[data-id]').dataset.id;
             taskDialog.showModal();
         }
     });
