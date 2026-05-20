@@ -16,7 +16,8 @@ const taskDescriptionInput = taskForm.querySelector('#taskDescription');
 const taskDueInput = taskForm.querySelector('#taskDue');
 const taskPriorityInput = taskForm.querySelector('#taskPriority');
 
-const renderTaskModal = (e) => {
+const configTaskModal = (taskId = null) => {
+    taskDialog.dataset.id = taskId;
     const activeProject = stateManager.getCurrentProject();
     const currentFormIntent = formManager.formIntent;
 
@@ -28,7 +29,8 @@ const renderTaskModal = (e) => {
         taskPriorityInput.value = 'medium';
         taskSubmitBtn.textContent = 'Create';
     } else if (currentFormIntent === 'EDIT') {
-        const taskId = e.target.closest('[data-id]').dataset.id;
+        if (!taskId) return;
+
         const task = activeProject.findTask(taskId);
         
         taskHeading.textContent = `Edit Task for ${activeProject.title}`;
@@ -56,7 +58,6 @@ const setupModalEvents = () => {
 
         if (currentFormIntent === 'CREATE') {
             activeProject.addTask(taskTitle, taskDescription, taskDue, taskPriority);
-            console.log('here');
         } else if (currentFormIntent === 'EDIT') {
             const taskId = taskDialog.dataset.id ?? null;
 
@@ -79,7 +80,7 @@ const setupModalEvents = () => {
 
     cancelBtn.addEventListener('click', () => taskDialog.close());
 
-    taskForm.addEventListener('close', taskForm.reset);
+    taskDialog.addEventListener('close', () => taskForm.reset());
 }
 
-export { renderTaskModal, setupModalEvents };
+export { configTaskModal, setupModalEvents };
