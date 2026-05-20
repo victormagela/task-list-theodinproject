@@ -3,6 +3,10 @@ import "../../styles/modals.css";
 import Project from "../../Models/project.js";
 import { loadNewProject } from "../sidebar-content.js";
 
+const projectDialog = document.getElementById('newProjectDialog');
+const projectForm = document.getElementById('newProjectForm');
+const cancelBtn = document.getElementById('cancelBtn');
+
 export default function loadNewProjectModal() {
     const newProjectBtn = document.getElementById('newProjectBtn');
     const newProjectDialog = document.getElementById('newProjectDialog');
@@ -34,3 +38,21 @@ export default function loadNewProjectModal() {
 
 }
 
+const setupProjectModalEvents = () => {
+    projectForm.addEventListener('submit', () => {
+        const formData = new FormData(newProjectForm);
+        const projectName = formData.get('projectName');
+        const projectDescription = formData.get('projectDescription');
+
+        const newProject = Project.create(projectName, projectDescription);
+        loadNewProject(newProject);
+    })
+
+    cancelBtn.addEventListener('click', () => projectDialog.close());
+
+    projectDialog.addEventListener('close', () => projectForm.reset());
+}
+
+const renderProjectModal = () => {
+
+}
