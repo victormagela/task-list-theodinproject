@@ -2,7 +2,7 @@ import "../../styles/modals.css";
 
 import Project from "../../Models/project.js";
 import stateManager from "../../services/state-manager.js";
-import { renderTaskGrid } from "../main-content.js";
+import { renderTaskGrid } from "../task-grid.js";
 import { formManager } from "../../services/form-manager.js";
 
 const taskDialog = document.getElementById('taskDialog');

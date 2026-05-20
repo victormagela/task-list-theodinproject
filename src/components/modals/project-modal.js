@@ -1,9 +1,10 @@
 import "../../styles/modals.css";
 
 import Project from "../../Models/project.js";
-import { renderProjectList } from "../sidebar-content.js";
+import { highlightActiveProject, renderProjectList } from "../sidebar.js";
 import { formManager } from "../../services/form-manager.js";
 import stateManager from "../../services/state-manager.js";
+import { renderTaskGrid } from "../task-grid.js";
 
 const projectDialog = document.getElementById('newProjectDialog');
 const projectForm = document.getElementById('newProjectForm');
@@ -14,50 +15,21 @@ const cancelBtn = document.getElementById('projectCancelBtn');
 const projectTitleInput = projectForm.querySelector('#projectTitle');
 const projectDescriptionInput = projectForm.querySelector('#projectDescription');
 
-export default function loadNewProjectModal() {
-    const newProjectBtn = document.getElementById('newProjectBtn');
-    const newProjectDialog = document.getElementById('newProjectDialog');
-    const newProjectForm = document.getElementById('newProjectForm');
-    const cancelBtn = document.getElementById('projectCancelBtn');
-    
-    newProjectBtn.addEventListener('click', () => {
-        newProjectDialog.showModal();
-    });
-
-    cancelBtn.addEventListener('click', () => {
-        newProjectDialog.close();
-    });
-
-    projectForm.addEventListener('submit', () => {
-        const formData = new FormData(projectForm);
-        const projectName = formData.get('projectName');
-        const projectDescription = formData.get('projectDescription');
-
-        const newProject = Project.create(projectName, projectDescription);
-
-        loadNewProject(newProject);
-        newProjectForm.reset();
-    });
-
-    newProjectForm.addEventListener('click', (e) => e.stopPropagation());
-
-    newProjectDialog.addEventListener('click', () => newProjectDialog.close());
-
-}
-
 const setupProjectModalEvents = () => {
     projectForm.addEventListener('submit', () => {
         const currentFormIntent = formManager.projectFormIntent;
         
         const formData = new FormData(projectForm);
        
-        const projectName = formData.get('projectName');
+        const projectName = formData.get('projectTitle');
         const projectDescription = formData.get('projectDescription');
         
         if (currentFormIntent === 'CREATE') {
             const newProject = Project.create(projectName, projectDescription);
             stateManager.addProject(newProject);
+            stateManager.setCurrentProject(newProject);
             renderProjectList(stateManager.getProjects());
+            renderTaskGrid(newProject.description, newProject.tasks);
         }
         else if (currentFormIntent === 'EDIT') {
             console.log('NOT YET IMPLEMENTED');
