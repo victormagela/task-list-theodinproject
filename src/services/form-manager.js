@@ -1,7 +1,9 @@
 export const formManager = (function() {
-    let formIntent = null;
+    let taskFormIntent = null;
+    let projectFormIntent = null;
     
     return {
-        formIntent,
+        taskFormIntent,
+        projectFormIntent
     }
 })();

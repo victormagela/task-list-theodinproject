@@ -33,18 +33,18 @@
     <!-- dialog window for creating a new project -->
     <dialog id="newProjectDialog">
         <form method="dialog" id="newProjectForm">
-            <h3>New Project</h3>
+            <h3 id="projectHeading">New Project</h3>
             <div class="form-group">
-                <label for="projectName">Project Name:</label>
-                <input type="text" id="projectName" name="projectName" required>
+                <label for="projectTitle">Project Name:</label>
+                <input type="text" id="projectTitle" name="projectTitle" required>
             </div>
             <div class="form-group">
                 <label for="projectDescription">Project Description:</label>
                 <input type="text" id="projectDescription" name="projectDescription">
             </div>
             <div class="dialog-buttons">
-                <button type="submit">Create</button>
-                <button type="button" id="cancelBtn">Cancel</button>
+                <button type="submit" id="projectSubmitBtn">Create</button>
+                <button type="button" id="projectCancelBtn">Cancel</button>
             </div>
         </form>
     </dialog>

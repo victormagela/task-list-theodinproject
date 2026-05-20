@@ -19,7 +19,7 @@ const taskPriorityInput = taskForm.querySelector('#taskPriority');
 const configTaskModal = (taskId = null) => {
     taskDialog.dataset.id = taskId;
     const activeProject = stateManager.getCurrentProject();
-    const currentFormIntent = formManager.formIntent;
+    const currentFormIntent = formManager.taskFormIntent;
 
     if (currentFormIntent === 'CREATE') {
         taskHeading.textContent = `New Task for ${activeProject.title}`;
@@ -46,7 +46,7 @@ const configTaskModal = (taskId = null) => {
 
 const setupModalEvents = () => {
     taskForm.addEventListener('submit', (e) => {
-        const currentFormIntent = formManager.formIntent;
+        const currentFormIntent = formManager.taskFormIntent;
         const activeProject = stateManager.getCurrentProject();
         
         const formData = new FormData(taskForm);

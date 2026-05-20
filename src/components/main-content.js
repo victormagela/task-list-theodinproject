@@ -24,7 +24,7 @@ const setupGridEvents = () => {
         } else if (btn.dataset.action === 'edit') {
             const taskId = btn.closest('[data-id]').dataset.id;
 
-            formManager.formIntent = 'EDIT';
+            formManager.taskFormIntent = 'EDIT';
             configTaskModal(taskId);
             taskDialog.showModal();
         }

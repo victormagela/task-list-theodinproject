@@ -14,6 +14,6 @@ setupGridEvents();
 
 const newTaskBtn = document.getElementById('newTaskBtn');
 newTaskBtn.addEventListener('click', () => {
-    formManager.formIntent = 'CREATE';
+    formManager.taskFormIntent = 'CREATE';
     configTaskModal();
 });
