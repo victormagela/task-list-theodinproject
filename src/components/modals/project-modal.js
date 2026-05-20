@@ -1,8 +1,9 @@
 import "../../styles/modals.css";
 
 import Project from "../../Models/project.js";
-import { loadNewProject } from "../sidebar-content.js";
+import { renderProjectList } from "../sidebar-content.js";
 import { formManager } from "../../services/form-manager.js";
+import stateManager from "../../services/state-manager.js";
 
 const projectDialog = document.getElementById('newProjectDialog');
 const projectForm = document.getElementById('newProjectForm');
@@ -55,7 +56,8 @@ const setupProjectModalEvents = () => {
         
         if (currentFormIntent === 'CREATE') {
             const newProject = Project.create(projectName, projectDescription);
-            loadNewProject(newProject);
+            stateManager.addProject(newProject);
+            renderProjectList(stateManager.getProjects());
         }
         else if (currentFormIntent === 'EDIT') {
             console.log('NOT YET IMPLEMENTED');
@@ -81,3 +83,5 @@ const configProjectModal = () => {
         console.log('NOT YET IMPLEMENTED');
     }
 }
+
+export { configProjectModal, setupProjectModalEvents };
